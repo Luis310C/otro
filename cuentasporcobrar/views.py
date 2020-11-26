@@ -52,6 +52,7 @@ def pantallainicio(request):
 class editUser(LoginRequiredMixin,UpdateView):
     model=Usuario
     fields='__all__'
+    template_name='actualizar.html'
     success_url=reverse_lazy('menu')
     def get_object(self):
         return self.request.user
