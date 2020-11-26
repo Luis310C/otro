@@ -1,0 +1,31 @@
+
+{% extends "Template1.html" %}
+{% block title %}
+{{extra.titulo}}
+  {% endblock %}
+{%block content%}
+<div class="card  border-secondary  mb-3 mx-auto" style = "max-width: 30rem;">
+<div class="form-group form-signin">
+    
+  <h1 class="h3 mb-3 font-weight-normal text-center card-title">{{extra.titulo}}</h1>
+    <form action="" method="post" enctype="multipart/form-data">
+    
+        {% load widget_tweaks%}
+        {%csrf_token%}
+        {% for field in form.visible_fields %}
+        <div class="form-group">
+          <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+          {{ field|add_class:'form-control' }}
+          {% for error in field.errors %}
+            <span class="help-block">{{ error }}</span>
+          {% endfor %}
+        </div>
+      {% endfor %}
+  
+        
+    
+    <input class="btn btn-secondary" type="submit" value="Guardar"> 
+    </form>
+    </div>
+</div>
+{%endblock%}

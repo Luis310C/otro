@@ -1,0 +1,46 @@
+
+{% extends "Template1.html" %}
+{% block title %}
+Iniciar sesion
+  {% endblock %}
+  {%block content%}
+  <script>
+      
+   
+   $(document).ready(function(){
+   $('#id_password').addClass('form-control')
+   $('#id_username').addClass('form-control')
+   $("#id_username").attr("placeholder", "usuario")
+   $('#id_password').attr("placeholder", "contraseña")
+   
+       });
+   
+  </script>
+ 
+  <br>
+  <br>
+  <div class='bg'>
+<div class="card  mb-3 mx-auto" style = "max-width: 20rem;">
+    <form class="form-signin" method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+
+      
+      <h1 class="h3 mb-3 font-weight-normal text-center">Inicio de sesion</h1>
+      <label for=id_username> Usuario</label>
+     
+      {{ form.username }}
+      <br><br>
+    
+      <label for="id_password">Contraseña</label>
+
+      {{ form.password }}
+      <p><a href="{% url 'password_reset' %}">¿Contraseña olvidada?</a></p>
+      <div>
+        <input type="submit" class="btn btn-lg btn-primary btn-block" value="Iniciar Sesion" />
+        <input type="hidden" name="next" value="{{ next }}" />
+      </div>
+    
+    </form>
+  </div>
+</div>
+  {% endblock %}

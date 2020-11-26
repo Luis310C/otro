@@ -1,0 +1,93 @@
+{% extends "Template1.html" %}
+{% block title %}Editar Perfil {%endblock%}
+{%block titulo%}
+
+{%endblock%} 
+{%block content%}
+<style>
+
+    html,
+    body {
+      height: 100%;
+    }
+    .form-signin {
+      width: 100%;
+      max-width: 330px;
+      padding: 15px;
+      margin: 0 auto;
+    }
+    
+    .form-signin .form-control {
+      position: relative;
+      box-sizing: border-box;
+      height: auto;
+      padding: 10px;
+      font-size: 16px;
+    }
+    .form-signin .form-control:focus {
+      z-index: 2;
+    }
+    
+    
+        </style>
+        <br>
+        <br>
+        <br>
+        {% if form.errors.username %}
+        <div class="alert alert-info" role="alert">
+         El nombre de usuario ya existe 
+        </div>
+        {% endif %}
+        {%if form.errors.email%}
+        <div class="alert alert-info" role="alert">
+          El email ingresado no es valido
+         </div>
+        {% endif %}
+
+        {%if form.errors.password2%}
+        <div class="alert alert-info" role="alert">
+          Las contraseñas ingresadas deben coincidir
+         </div>
+         <div class="alert alert-info" role="alert">
+          Las contraseñas tiene que tener al menos 8 caracteres
+         </div>
+         <div class="alert alert-info" role="alert">
+          Las contraseñas no pueden ser unicamente numericas
+         </div>
+        {% endif %}
+
+      
+     
+
+ <div class="card  border-secondary  mb-3 mx-auto" style = "max-width: 30rem;">
+  <br>
+  <br>
+  
+  <h1 class="h3 mb-3 font-weight-normal text-center card-title">Editar {{user.usuario}}</h1>
+<div class="form-group form-signin">
+<form action=""   class='was-validated' method="post">
+    {%csrf_token%}
+    {{form.as_p}}
+
+    <br>
+    <br>
+<input class="btn btn-primary" type="submit" value="Guardar Cambios"> 
+
+<br>
+<br>
+<br>
+
+</form>
+</div></div>
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<script>
+  $(".helptext").text('La contraseña cifrada no se mostrara en este formulario si desea cambiarla siga este<a href='/password/'>link</a> ');
+</script>
+
+{%endblock%}

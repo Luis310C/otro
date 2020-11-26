@@ -1,0 +1,80 @@
+
+{% extends "Template1.html" %}
+{% block title %}
+Menu
+  {% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+{% block content %}
+<div class="container">
+
+
+    <h1 class="mt-4 mb-3">Menu:
+     
+    </h1>
+
+    
+
+   
+
+
+
+
+  
+  
+
+
+
+
+    <div class="row">
+      
+      <div class="col-lg-3 mb-4">
+        <img  class="rounded float-left img-thumbnail"  src="https://3.bp.blogspot.com/-Jrtt0XY9jEA/XGZAUJHdAaI/AAAAAAAABMQ/CFETUkh1sRAi0P7uwFZp4NNwQfRBtOvdACLcBGAs/s1600/6132675-1.jpg" alt="" srcset="">
+      </div>
+     
+      <div class="col-6 mb-4">
+        <h2>Cuentas por Pagar</h2>
+        <ul>
+          <li> sistema de escaneo de factura y verificación de las facturas pendientes de pago </li>
+         <li> Revisión de facturas de proveedores, para determinar su aprobación o rechazo </li>
+          <li>Para esto tiene que tener, cotización autorizada y orden de compra autorizada. </li>
+          
+          
+         <li> Realizar la programación de pago a proveedores en las fechas correspondientes </li>
+          <li>Seguimiento de facturas vencidas y analizar sus motivos </li>
+         <li> Reportar la información relativa a su área </li>
+        </ul>
+      </div>
+      <div class="col-lg-3 mb-5">
+        <div class="list-group">
+          
+          {%if object_list%}
+          {% for b in object_list  %} 
+         <a href="{% url b.url %}" class="list-group-item">{{b.opcion}}</a>
+          {% endfor %}
+          {% else %}
+          <div class='alert-danger'>nos se detecta ningun objeto</div>
+          {%endif%}
+        </div>
+
+      </div>
+    </div>
+   
+
+  </div>
+
+{%endblock%}
+
+
+
+

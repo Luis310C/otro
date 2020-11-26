@@ -1,0 +1,28 @@
+
+{% extends "Template1.html" %}
+{% block title %}
+Tabla
+{% load render_table from django_tables2 %}
+  {% endblock %}
+
+
+
+
+
+
+
+{% block content %}
+<script>
+    $(document).ready(function(){
+           $('table').addClass('table');  
+           $('table').addClass('table-bordered');
+         
+            
+           $('.table-container').addClass('table-responsive');  
+           
+    })
+   </script>
+   <br>
+   <br>
+{% render_table object_list %}
+{%endblock%}

@@ -1,0 +1,37 @@
+html,
+body {
+
+  height: 100%;
+}
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+
+.form-signin .form-control {
+  position: relative;
+  box-sizing: border-box;
+  height: auto;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+
+.navbar .dropdown-menu{
+    background-color: rgba(0,0,0,0.3);
+}
+.dropdown-item:hover{
+    background-color: rgba(0,0,0,0.3);
+}
+.navbar form button{
+    background-color: #002bea;
+    color:#FFF;
+    border:0;
+}
+.navbar form button:hover{
+    background-color: #000;
+}

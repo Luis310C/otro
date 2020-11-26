@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link   rel="stylesheet" href="/static/css/personalizar.css" media="screen">
+    {% if user.is_authenticated %}
+      <link  rel="stylesheet" href="/media/css/{{user.usuario.estilo.estilo}}.css" media="screen">
+  {% else %}
+<link   rel="stylesheet" href="/media/css/Oscuro.css" media="screen">
+{% endif %} 
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+   
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+<title>{% block title %}
+  {% endblock %}</title>
+</head>
+<body>
+
+    <div class="mynav ">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light py-3 " >
+        <a class="navbar-brand" href="{% url 'home' %}">Cuentas por cobrar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'home' %}">Inicio <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'menu' %}">Desarrollado con python</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {% if user.is_authenticated %}
+                {{user.get_username }}
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{% url 'menu' %}">Menu</a>
+                <a class="dropdown-item" href="{% url 'logout'%}?next={{request.path}}">Cerrar Sesion</a>
+              </div>
+
+
+              {% else %}
+           Usuarios
+            </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{% url 'login'%}">Iniciar Sesion</a>
+                <a class="dropdown-item" href="{% url 'registrar'%}">Registrar</a> 
+              </div>
+              {%endif%}
+            </li>
+          
+          </ul>
+         
+        </div>
+      </nav>
+    </div>
+    <div class="container">
+      
+      {% block content %}
+      
+          {% endblock %}
+      
+  </div>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+ 
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; Desarrollo Web 2020</p>
+    </div>
+   
+  </footer>
+</body>
+</html>

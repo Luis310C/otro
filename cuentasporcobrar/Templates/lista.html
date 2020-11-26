@@ -1,0 +1,74 @@
+
+{% extends "Template1.html" %}
+{% block title %}
+Opcion Menu
+{% endblock %}
+{%block content%}
+<div class="container">
+
+          
+    <h1 class="mt-4 mb-3">Contenido
+     
+    </h1>
+  
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="/">inicio</a>
+      </li>
+      <li class="breadcrumb-item active">Objetos Menu</li>
+    </ol>
+  
+    <div class="row">
+  
+    
+      <div class="col-md-8">
+  
+       
+        {%for articulo in object_list%}
+  <div class="card mb-4">
+          
+          <div class="card-body">
+            <h2 class="card-title">{{articulo}}</h2><a  class="btn btn-sm  btn-danger" href="{% url 'editaropcion' articulo.pk %}"> editar</a>
+       
+     
+          </div>
+          
+        </div>
+        
+  {%endfor%}      
+  
+        
+  
+  <span class="current">
+  Pagina {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}
+  </span>     
+  <nav >
+        <ul class="pagination">
+         
+          {% if page_obj.has_previous %}
+          <li class="page-item">  <a  class="page-link" href="?page=1">&laquo; Primera</a></li>
+            <li class="page-item">  <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Anterior</a></li>
+          {% endif %}
+  
+          
+  
+          {% if page_obj.has_next %}
+            <li class="page-item"> <a  class="page-link" href="?page={{ page_obj.next_page_number }}">Siguiente</a></li> 
+            <li class="page-item"> <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">ultima &raquo;</a></li> 
+          {% endif %}
+        </ul>
+      </nav>
+       
+   
+  
+  
+      </div>
+  
+      
+     
+  
+    </div>
+  
+  
+  </div>
+{%endblock%}

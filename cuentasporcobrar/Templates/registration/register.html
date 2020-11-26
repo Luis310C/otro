@@ -1,0 +1,26 @@
+{% extends "Template1.html" %}
+{% block title %}
+Registro
+  {% endblock %}
+  {%block content%}
+  <form action=""   class='was-validated' method="post" enctype="multipart/form-data">
+    <h1 class="h3 mb-3 font-weight-normal text-center">Registrar</h1>
+    {%csrf_token%}
+    {{form.as_p}}
+    <br>
+    <br>
+<button class="btn btn-primary " type="submit" > Registrar
+</button>
+<br>
+<br>
+<br>
+
+
+</form>
+
+<script>
+    $(".helptext").hide();
+    $(".form-group ul").text("");
+    $('form ul li').hide();
+</script>
+{% endblock %}
