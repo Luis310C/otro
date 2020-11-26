@@ -105,6 +105,7 @@ class Deleteopcion(LoginRequiredMixin,DeleteView):
     
 class ListarOpciones(LoginRequiredMixin,ListView):
     queryset=OpcionesMenu.objects.all()
+    paginate_by=4
     template_name='lista.html'
 
 class editarOpcion(LoginRequiredMixin,UpdateView):
@@ -139,7 +140,7 @@ class registrarCliente(LoginRequiredMixin,CreateView):
     model=cliente
     fields='__all__'
     template_name='crear.html'
-    success_url=reverse_lazy('clientesT')
+    success_url=reverse_lazy('clienteT')
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['extra'] = {'titulo':'Registrar Cliente'}
@@ -200,3 +201,30 @@ class registrarDeuda(LoginRequiredMixin,CreateView):
 class tablaopcionesMenu(ListView):
     model=OpcionesMenu
     template_name='tabla.html'
+
+class rollista(ListView):
+    model=Rol
+    template_name='listarol.html'
+    paginate_by=3
+
+
+
+class editRol(LoginRequiredMixin,UpdateView):
+    model=Rol
+    fields='__all__'
+    template_name='actualizar.html'
+    success_url=reverse_lazy('listarol')
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['extra'] = {'titulo':'actualizar rol'}
+        return context
+  
+
+class DeleteRol(LoginRequiredMixin,DeleteView):
+    model=Rol
+    template_name='Eliminar.html'
+    success_url=reverse_lazy('listarol')
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['extra'] = {'titulo':'eliminar rol','categoria':'Rol'}
+        return context
