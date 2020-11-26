@@ -1,0 +1,7 @@
+{% extends "Template1.html" %}
+{% block title %} cerrar sesion {%endblock%}
+{% block content %}
+<p>Sesion cerrada</p>  
+
+<a href="{% url 'login'%}">Click para iniciar sesion de nuevo.</a>
+{% endblock %}

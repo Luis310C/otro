@@ -13,10 +13,11 @@ from django_tables2 import SingleTableView
 from .tabla import  tablausuario
 
 
-class tablamodificada(SingleTableView):
+class tablamodificada(LoginRequiredMixin,SingleTableView):
     model=Usuario
     table_class=tablausuario
     template_name='usuarios-tabla.html'
+    
 
 
 def inicio(request):
@@ -37,7 +38,7 @@ class cambiarestilo(LoginRequiredMixin,UpdateView):
     model=Usuario
     fields=['estilo']
     template_name='actualizar.html'
-    success_url=reverse_lazy('home')
+    success_url=reverse_lazy('menu')
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['extra'] = {'titulo':'Cambiar estilo'}
@@ -64,6 +65,8 @@ class agregarRol(LoginRequiredMixin,CreateView):
         return context
     success_url=reverse_lazy('home')
 
+
+
 class agregarEstilo(LoginRequiredMixin,CreateView):
     model=Estilo
     template_name='crear.html'
@@ -84,6 +87,15 @@ class agregarOpcionMenu(LoginRequiredMixin,CreateView):
         return context
     success_url=reverse_lazy('menu')
 
+class Deleteopcion(LoginRequiredMixin,DeleteView):
+    model=OpcionesMenu
+    template_name='Eliminar.html'
+    success_url=reverse_lazy('listaopcion')
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['extra'] = {'titulo':'eliminar opcion','categoria':'Opcion menu'}
+        return context
+    
 class ListarOpciones(LoginRequiredMixin,ListView):
     queryset=OpcionesMenu.objects.all()
     template_name='lista.html'
@@ -177,3 +189,7 @@ class registrarDeuda(LoginRequiredMixin,CreateView):
         proveedor=form.cleaned_data['Proveedor']
         Proveedor.objects.filter(proveedor=proveedor).update(total_deuda=F('total_deuda')+cantidad)
         return super().form_valid(form)
+
+class tablaopcionesMenu(ListView):
+    model=OpcionesMenu
+    template_name='tabla.html'

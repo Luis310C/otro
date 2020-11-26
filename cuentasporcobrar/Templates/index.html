@@ -19,7 +19,11 @@ Inicio
         <div class="card h-100">
           <div class="card-body">
             <h4 class="card-title">
-              <a href="accounts/login">Empezar</a>
+              {% if user.is_authenticated %}
+              <a href="{% url 'menu'  %}">Empezar</a>
+                {%else%}
+                <a href="{% url 'login'  %}">Empezar</a>
+                {%endif%}
             </h4>
             <p class="card-text">Registro y gestion de deuda con mantenimiento de roles y elementos menu.</p>
           </div>

@@ -28,8 +28,8 @@ Opcion Menu
   <div class="card mb-4">
           
           <div class="card-body">
-            <h2 class="card-title">{{articulo}}</h2><a  class="btn btn-sm  btn-danger" href="{% url 'editaropcion' articulo.pk %}"> editar</a>
-       
+            <h2 class="card-title">{{articulo}}</h2><a  class="btn btn-sm btn-warning" href="{% url 'editaropcion' articulo.pk %}"> editar</a>
+            <a  class="btn btn-sm  btn-danger" href="{% url 'deleteopcion' articulo.pk %}"> eliminar</a>
      
           </div>
           

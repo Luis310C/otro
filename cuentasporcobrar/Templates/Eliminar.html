@@ -2,8 +2,9 @@
 {% extends "Template1.html" %}
 {% block title %}
 {{extra.titulo}}
+{%endblock%}
 {%block content%}
-<h1>Eliminar Articulo</h1>
+<h1>Eliminar {{extra.categoria}}</h1>
 <br></br>
 <h3>{{extra.categoria}}:{{object}}</h3>
 <div class="form-group">
