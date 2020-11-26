@@ -26,6 +26,7 @@ urlpatterns = [
     path('accounts/',include('django.contrib.auth.urls')),
     path('',inicio,name='home'),
     path('accounts/profile/',pantallainicio),
+    path('registrar/proveedor/',registrarproveedor.as_view(),name='agregarproveedor'),
     path('menu/',menu.as_view(),name='menu'),
     path('editar/estilo',cambiarestilo.as_view(),name='cambiarestilo'),
     path('editar/perfil',editarperfil.as_view(),name='editarperfil'),
