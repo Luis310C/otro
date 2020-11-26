@@ -50,7 +50,7 @@ def pantallainicio(request):
     return render(request,'registration/accounts_profile.html')
 
 class editUser(LoginRequiredMixin,UpdateView):
-    form_class=Usuario
+    model=Usuario
     fields='__all__'
     success_url=reverse_lazy('menu')
     def get_object(self):
