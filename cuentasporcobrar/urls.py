@@ -42,5 +42,6 @@ urlpatterns = [
     path('tabla/usuarios',tableusuarios.as_view(),name='usuariosT'),
     path('tabla/cliente',tablecliente.as_view(),name='clienteT'),
     path('tabla/articulo',tablearticulo.as_view(),name='articuloT'),
-    path('registrar/deuda',registrarDeuda.as_view(),name='registrar-deuda')
+    path('registrar/deuda',registrarDeuda.as_view(),name='registrar-deuda'),
+    path('tabla/mod',tablamodificada.as_view(),name='tabla')
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -44,6 +44,7 @@ class Usuario(models.Model):
     usuario=models.OneToOneField(User,null=True,on_delete=models.CASCADE)
     rol=models.ForeignKey(Rol,on_delete=models.CASCADE,default=Rol.objects.filter(id_rol=2).values('id_rol'))
     estilo=models.ForeignKey(Estilo,on_delete=models.CASCADE,default=Estilo.objects.filter(id_estilo=1).values('id_estilo'))
+    
     @receiver(post_save, sender=User)
     def update_profile_signal(sender, instance, created, **kwargs):
         if created:
@@ -54,6 +55,7 @@ class Usuario(models.Model):
       
     def __str__(self):
         return self.usuario.username
+        
 
 class articulo(models.Model):
     nombre=models.CharField(max_length=50)
@@ -68,8 +70,8 @@ class pedido(models.Model):
     numero_pedido=models.BigAutoField(primary_key=True,null=False,blank=False)
     creacion=models.DateTimeField(auto_now_add=True)
     descripcion=models.TextField()
-    articulo=models.ForeignKey(articulo,on_delete=models.CASCADE)
-    cantidad=models.IntegerField()
+    Proveedor=models.ForeignKey(Proveedor,on_delete=models.CASCADE)
+    total_adeudado=models.FloatField()
   
 
 

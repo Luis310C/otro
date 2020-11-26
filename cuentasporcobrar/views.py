@@ -9,6 +9,16 @@ from  .models import *
 from django.db import models
 from django.urls import reverse_lazy
 from django.db.models import F
+from django_tables2 import SingleTableView
+from .tabla import  tablausuario
+
+
+class tablamodificada(SingleTableView):
+    model=Usuario
+    table_class=tablausuario
+    template_name='usuarios-tabla.html'
+
+
 def inicio(request):
     return render(request,'index.html')
 
@@ -137,6 +147,7 @@ class tableusuarios(ListView):
 class tablecliente(ListView):
     model=cliente
     template_name='tabla.html'
+    
 
 class tablearticulo(ListView):
     model=articulo
@@ -161,4 +172,8 @@ class registrarDeuda(LoginRequiredMixin,CreateView):
         context['extra'] = {'titulo':'Registrar aumento de deuda'}
         return context
     success_url=reverse_lazy('proveedoresT')
-    
+    def form_valid(self,form):
+        cantidad=form.cleaned_data['total_adeudado']
+        proveedor=form.cleaned_data['Proveedor']
+        Proveedor.objects.filter(proveedor=proveedor).update(total_deuda=F('total_deuda')+cantidad)
+        return super().form_valid(form)
