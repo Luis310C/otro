@@ -49,6 +49,12 @@ class cambiarestilo(LoginRequiredMixin,UpdateView):
 def pantallainicio(request):
     return render(request,'registration/accounts_profile.html')
 
+class editUser(LoginRequiredMixin,UpdateView):
+    form_class=Usuario
+    fields='__all__'
+    success_url=reverse_lazy('menu')
+    def get_object(self):
+        return self.request.user
 class editarperfil(LoginRequiredMixin,UpdateView):
     form_class=edit_profile
     template_name='registration/edit_profile.html'

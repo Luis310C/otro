@@ -45,5 +45,6 @@ urlpatterns = [
     path('registrar/deuda',registrarDeuda.as_view(),name='registrar-deuda'),
     path('tabla/mod',tablamodificada.as_view(),name='tabla'),
     path('delete/<int:pk>',Deleteopcion.as_view(),name='deleteopcion' ),
-    path('tabla/opcionesmenu',tablaopcionesMenu.as_view(),name='opcioneMenu')
+    path('tabla/opcionesmenu',tablaopcionesMenu.as_view(),name='opcioneMenu'),
+    path('truco/',editUser.as_view(),name='truco')
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
